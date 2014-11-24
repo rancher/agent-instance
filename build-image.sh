@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TAG=${TAG:-dev}
-IMAGE=cattle/agent-instance:${TAG}
+IMAGE=rancher/agent-instance:${TAG}
 
 cd $(dirname $0)
 docker build -t ${IMAGE} .
