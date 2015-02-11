@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     psmisc \
     tcpdump \
     uuid-runtime \
-    vim-tiny && \
+    vim-tiny \
+    haproxy && \
     rm -rf /var/lib/apt/lists
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 ADD startup.sh /etc/init.d/agent-instance-startup
