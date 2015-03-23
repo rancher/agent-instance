@@ -16,5 +16,7 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 ADD startup.sh /etc/init.d/agent-instance-startup
+ADD https://github.com/rancherio/swarm/releases/download/v0.1.0-rancher/swarm /usr/bin/swarm
+RUN chmod +x /usr/bin/swarm
 CMD ["/etc/init.d/agent-instance-startup", "init"]
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y racoon
