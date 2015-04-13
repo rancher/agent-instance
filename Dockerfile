@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     dnsmasq \
     iptables \
     monit \
+    socat \
     nodejs \
     psmisc \
     tcpdump \
