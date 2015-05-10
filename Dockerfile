@@ -21,3 +21,5 @@ ADD https://github.com/rancherio/swarm/releases/download/v0.1.0-rancher/swarm /u
 RUN chmod +x /usr/bin/swarm
 CMD ["/etc/init.d/agent-instance-startup", "init"]
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y racoon
+# Work around overlay bug
+RUN touch /etc/monit/conf.d/.hold
