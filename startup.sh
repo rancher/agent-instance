@@ -71,6 +71,10 @@ download_agent()
 
 setup_config_url()
 {
+    if [[ -e ${CATTLE_HOME}/etc/cattle/startup-env ]]; then
+        eval $(<${CATTLE_HOME}/etc/cattle/startup-env)
+    fi
+
     if [ -n "$CATTLE_CONFIG_URL" ]; then
         return
     fi
