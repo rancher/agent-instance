@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     uuid-runtime \
     vim-tiny \
     openssl \
+    libssl-dev \
     haproxy -t trusty-backports && \
     rm -rf /var/lib/apt/lists
 RUN ln -s /usr/bin/nodejs /usr/bin/node
