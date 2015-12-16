@@ -1,8 +1,6 @@
 FROM ibuildthecloud/ubuntu-core-base:14.04
 ADD http://stedolan.github.io/jq/download/linux64/jq /usr/bin/
 RUN chmod +x /usr/bin/jq
-RUN echo deb http://archive.ubuntu.com/ubuntu trusty-backports main universe | \
-      sudo tee /etc/apt/sources.list.d/backports.list
 RUN apt-get update && apt-get install -y \
     busybox \
     curl \
@@ -17,7 +15,9 @@ RUN apt-get update && apt-get install -y \
     vim-tiny \
     openssl \
     libssl-dev \
-    haproxy -t trusty-backports && \
+    software-properties-common && \
+    add-apt-repository ppa:vbernat/haproxy-1.6 && \
+    apt-get update && apt-get install -y haproxy && \
     rm -rf /var/lib/apt/lists
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 ADD startup.sh /etc/init.d/agent-instance-startup
