@@ -47,6 +47,9 @@ check_debug
 CONTENT_URL=/configcontent/configscripts
 INSTALL_ITEMS="configscripts agent-instance-startup"
 
+if [ -e /var/lib/rancher/etc/agent.conf ]; then
+    source /var/lib/rancher/etc/agent.conf
+fi
 
 call_curl()
 {
