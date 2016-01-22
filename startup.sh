@@ -91,6 +91,15 @@ setup_config_url()
     export CATTLE_CONFIG_URL
 }
 
+update_ca_bundle()
+{
+    mkdir -p /usr/local/share/ca-certificates/rancher
+    if [ -e "${CURL_CA_BUNDLE}" ]; then
+        cp "${CURL_CA_BUNDLE}" /usr/local/share/ca-certificates/rancher/rancherAddedCA.crt
+        update-ca-certificates
+    fi
+}
+
 start()
 {
     mkdir -p $CATTLE_HOME
@@ -98,6 +107,9 @@ start()
 
     # Let scripts know its being ran during startup
     export CATTLE_AGENT_STARTUP=true
+    if [ -n "${CURL_CA_BUNDLE}" ]; then
+        update_ca_bundle
+    fi
 
     setup_config_url
     download_agent
