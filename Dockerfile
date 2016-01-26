@@ -1,4 +1,4 @@
-FROM ibuildthecloud/ubuntu-core-base:14.04
+FROM ubuntu:14.04.3
 ADD http://stedolan.github.io/jq/download/linux64/jq /usr/bin/
 RUN chmod +x /usr/bin/jq
 RUN echo deb http://archive.ubuntu.com/ubuntu trusty-backports main universe | \
